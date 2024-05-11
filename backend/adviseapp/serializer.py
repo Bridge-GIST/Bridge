@@ -5,4 +5,4 @@ from .models import Advice
 class AdviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Advice
-        fields = ['id', 'target_diary', 'gpt_advice', 'gpt_recommendation']
+        fields = ['id', 'target_diary', 'gpt_advice']
