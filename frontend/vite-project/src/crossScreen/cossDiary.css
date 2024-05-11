@@ -1,0 +1,39 @@
+.title-style {
+    font-family: 'Gmarket Sans TTF', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    color: #4CA771;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.cross-diary-container {
+    width: 80%;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+.diary-display {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.original-diary, .positive-diary {
+    width: 48%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+}
+
+.original-diary h2, .positive-diary h2 {
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+p {
+    line-height: 1.6;
+}

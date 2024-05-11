@@ -32,6 +32,20 @@ class CreateDiaryAPIView(APIView):
         serializer = DiarySerializer(diary)
         return Response(serializer.data)
     
+     # GPT로 긍정 일기 변환 (임시 처리)
+        diary.positive_content = self.transform_content_using_gpt(content)
+        diary.save()
+
+        serializer = DiarySerializer(diary)
+        return Response(serializer.data)
+
+    def transform_content_using_gpt(self, content):
+        # GPT 모델을 사용하여 내용을 긍정적으로 변환
+        return f"긍정적인 변환 예시: {content}"  # 임시 구현
+    
+    
+    
+    
 #제목이나 날짜 정보를 받아서 반환
 class SearchDiaryAPIView(APIView):
     permission_classes = [IsAuthenticated]
