@@ -19,7 +19,7 @@ function MainScreenForm() {
           return;
         }
         const csrfToken = getCookie('csrftoken');
-        const response = await axios.get('http://localhost:8000/api/diary/user-diaries', {
+        const response = await axios.get('http://127.0.0.1:8000/api/diary/user-diaries', {
           withCredentials: true
         });
         setDiaries(response.data);
@@ -35,7 +35,7 @@ function MainScreenForm() {
   const handleSearch = async () => {
     try {
       const csrfToken = getCookie('csrftoken');
-      const response = await axios.get(`http://localhost:8000/api/search-diary/?query=${query}&date=${date}`, {
+      const response = await axios.get(`http://127.0.0.1:8000/api/search-diary/?query=${query}&date=${date}`, {
         withCredentials: true
       });
       setDiaries(response.data);
@@ -47,58 +47,62 @@ function MainScreenForm() {
 
   // "일기 쓰기" 버튼 클릭 시 diaryWrite 페이지로 이동
   const handleWriteDiary = () => {
-    navigate('/write/diaryWrite'); // navigate 함수를 사용하여 경로 이동
+    navigate('/write'); // navigate 함수를 사용하여 경로 이동
   };
 
   return (
-    <div>
-      <h1 className="title-style">Bridges</h1>
-      <div className="search-inputs">
-        <input
-          type="text"
-          className="search-input"
-          placeholder="Search by title..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <input
-          type="date"
-          className="search-input"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        />
-        <button onClick={handleSearch}>Search</button>
-        <button onClick={handleWriteDiary} className="write-diary-button">일기 쓰기</button> {/* 일기 쓰기 버튼 추가 */}
-      </div>
-
-      {diaries.length > 0 ? (
-        <div className="diary-table-container">
-          <table className="diary-table">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Title</th>
-                <th>Content</th>
-              </tr>
-            </thead>
-            <tbody>
-              {diaries.map(diary => (
-                <tr key={diary.id}>
-                  <td>{new Date(diary.created_at).toLocaleDateString()}</td>
-                  <td>{diary.title}</td>
-                  <td>{diary.content.slice(0, 30)}{diary.content.length > 30 ? '...' : ''}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+    <div className="app-container">
+        <div className="top-bar">
+            <div>
+                <h1 className="bridge-title">Bridges</h1>
+                <p className="subtitle">나의 불안을 긍정으로</p>
+            </div>
+            <div className="search-container">
+                <input
+                    type="text"
+                    className="search-input"
+                    placeholder="제목으로 검색하기"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                />
+                <input
+                    type="date"
+                    className="search-input"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                />
+                <button onClick={handleSearch} className="search-button">검색</button>
+            </div>
+            <button onClick={handleWriteDiary} className="write-button">일기 쓰기</button>
         </div>
-      ) : (
-        <div className="no-diaries-message">
-          <p>작성된 일기가 없습니다. 일기를 작성해주세요!</p>
-        </div>
-      )}
+        {diaries.length > 0 ? (
+            <div className="diary-table-container">
+                <table className="diary-table">
+                    <thead>
+                        <tr>
+                            <th>날짜</th>
+                            <th>제목</th>
+                            <th>내용</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {diaries.map(diary => (
+                            <tr key={diary.id}>
+                                <td>{new Date(diary.created_at).toLocaleDateString()}</td>
+                                <td>{diary.title}</td>
+                                <td>{diary.content.slice(0, 30)}{diary.content.length > 30 ? '...' : ''}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        ) : (
+            <div className="no-diaries-message">
+                <p>작성된 일기가 없습니다. 일기를 작성해주세요!</p>
+            </div>
+        )}
     </div>
-  );
+);
 }
 
 export default MainScreenForm;

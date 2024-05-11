@@ -6,6 +6,7 @@ import { LoginForm, SignupForm } from "./account";
 import { UserProvider } from "./UserContext";
 import { MainScreenForm } from "./mainScreen";
 import { FirstPage } from "./first";
+import { DiaryWrite } from "./write";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/signup" element={<SignupForm />} />
             <Route path="/mainscreen" element={<MainScreenForm />} />
             <Route path="/first" element={<FirstPage />} />
+            <Route path="/write" element={<DiaryWrite />} />
           </Routes>
         </div>
       </Router>

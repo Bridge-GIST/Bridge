@@ -1,47 +1,78 @@
-.title-style {
-    font-family: 'Gmarket Sans TTF', sans-serif;
-    font-weight: 700;
-    font-size: 40px;
-    color: #4CA771;
-    margin-top: 20px;
-    text-align: center;
-}
-
 .diary-write-container {
-    width: 80%;
+    width: 100%;
     max-width: 800px;
     margin: auto;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.top-section {
+    text-align: left;
+}
+
+.bridge-title {
+    font-family: 'Gmarket Sans TTF', sans-serif;
+    font-size: 24px;
+    color: black;
+}
+
+.bridge-title .main-part {
+    color: #4CA771; /* "B"의 색상 */
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #888888; /* 회색 텍스트 */
+    margin-top: 5px;
+}
+
+.diary-section {
+    background-color: #ffffff; /* 흰색 배경 */
+    padding: 20px;
+    border-radius: 8px; /* 모서리 둥글게 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
+    margin-top: 20px;
+}
+
+.diary-heading {
+    font-size: 20px;
+    text-align: center;
+    color: #333333;
+    margin-bottom: 20px;
 }
 
 .diary-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    margin-top: 20px;
+    gap: 10px;
 }
 
-.diary-input, .diary-textarea {
-    padding: 12px;
-    border: 2px solid #ddd;
-    border-radius: 4px;
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-label {
     font-size: 16px;
-    color: #333;
+    color: #666666;
+    margin-bottom: 5px;
+}
+
+.diary-input,
+.diary-textarea {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 14px;
 }
 
 .diary-input {
-    height: 40px;
-    font-size: 18px;
+    height: 35px; /* 입력 필드 높이 */
 }
 
 .diary-textarea {
-    height: 200px;
-    font-size: 16px;
-    line-height: 1.5;
-    resize: vertical;
+    height: 150px; /* 텍스트 영역 높이 */
+    resize: vertical; /* 세로 크기 조절 가능 */
 }
 
 .submit-button {
@@ -49,33 +80,13 @@
     background-color: #4CA771;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
     transition: background-color 0.3s;
     text-align: center;
-    display: block;
-    width: 100%;
+    margin-top: 10px;
 }
 
 .submit-button:hover {
     background-color: #3a945b;
-}
-
-.form-label {
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 5px;
-}
-
-/* Additional styling for overall layout and responsiveness */
-@media (max-width: 768px) {
-    .diary-write-container {
-        width: 90%;
-        padding: 10px;
-    }
-
-    .diary-form {
-        gap: 15px;
-    }
 }

@@ -1,41 +1,94 @@
-.title-style {
-  margin-top: 20px;
-  font-family: 'Gmarket Sans TTF', sans-serif;
-  font-weight: 700;
-  font-size: 40px;
-  text-align: center;
-  color: #4CA771;
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff; /* 흰색 배경 */
+  padding: 25px;
+  box-sizing: border-box;
 }
 
-.search-inputs {
-  margin-top: 20px;
+.top-bar {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0; /* 상단 바 구분선 */
+}
+
+.bridge-title {
+  font-family: 'Gmarket Sans TTF', sans-serif;
+  font-weight: 700;
+  font-size: 35px;
+  color: black; /* 기본 텍스트 색상 */
+}
+
+.bridge-title .main-part {
+  color: #4CA771; /* "B"의 색상 */
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #888888; /* 회색 텍스트 */
+  margin: 5px 0;
+}
+
+.right-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background: #f2f2f2; /* 회색 바탕 */
+  padding: 10px;
+  border-radius: 20px; /* 둥근 모서리 */
   gap: 10px;
-  justify-content: center;
+  flex-grow: 1; /* 검색 영역 확장 */
 }
 
 .search-input {
   padding: 10px;
   border: 2px solid #ddd;
-  border-radius: 4px;
+  border-radius: 20px; /* 둥근 모서리 */
+  background-color: #f2f2f2; /* 흰색 배경 */
+  outline: none;
+  width: 100%; /* 입력 필드 너비 조정 */
+  max-width: 200px; /* 최대 너비 설정 */
 }
 
-.write-diary-button {
-  padding: 10px 20px;
+.search-button {
+  padding: 8px 16px;
   background-color: #4CA771;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 20px; /* 둥근 모서리 */
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
-.write-diary-button:hover {
+.search-button:hover {
+  background-color: #3a945b;
+}
+
+.write-button {
+  padding: 10px 20px;
+  background-color: #4CA771;
+  color: white;
+  border: none;
+  border-radius: 20px; /* 둥근 모서리 */
+  cursor: pointer;
+  transition: background-color 0.3s;
+  order: 1; /* 일기 쓰기 버튼을 왼쪽으로 이동 */
+}
+
+.write-button:hover {
   background-color: #3a945b;
 }
 
 .diary-table-container {
   margin-top: 20px;
+  width: 100%;
 }
 
 .diary-table {
@@ -51,8 +104,9 @@
 }
 
 .no-diaries-message {
-  margin-top: 20px;
   text-align: center;
-  color: #888;
+  color: #888888;
   font-size: 16px;
+  margin-top: 50px; /* 메시지를 더 중앙에 위치 */
+  width: 100%;
 }
