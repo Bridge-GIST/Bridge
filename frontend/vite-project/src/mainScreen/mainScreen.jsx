@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // useNavigate 추가
+import { getCookie } from '../utils';
 import './MainScreenForm.css';
 
 function MainScreenForm() {
@@ -12,14 +13,14 @@ function MainScreenForm() {
   useEffect(() => {
     const fetchAllDiaries = async () => {
       try {
-        const token = localStorage.getItem('token');
-        if (!token) {
+        const user = localStorage.getItem('user');
+        if (!user) {
           console.error('로그인이 필요합니다.');
           return;
         }
-
-        const response = await axios.get('/api/user-diaries/', {
-          headers: { Authorization: `Bearer ${token}` }
+        const csrfToken = getCookie('csrftoken');
+        const response = await axios.get('http://127.0.0.1:8000/api/diary/user-diaries', {
+          withCredentials: true
         });
         setDiaries(response.data);
       } catch (error) {
@@ -33,14 +34,9 @@ function MainScreenForm() {
 
   const handleSearch = async () => {
     try {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        console.error('로그인이 필요합니다.');
-        return;
-      }
-
-      const response = await axios.get(`/api/search-diary/?query=${query}&date=${date}`, {
-        headers: { Authorization: `Bearer ${token}` }
+      const csrfToken = getCookie('csrftoken');
+      const response = await axios.get(`http://127.0.0.1:8000/api/search-diary/?query=${query}&date=${date}`, {
+        withCredentials: true
       });
       setDiaries(response.data);
     } catch (error) {

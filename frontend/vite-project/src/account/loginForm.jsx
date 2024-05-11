@@ -21,12 +21,6 @@ function LoginForm() {
             setUser(JSON.parse(storedUser));
         }
     }, [setUser]);
-
-    useEffect(() => {
-        if (user) {
-            navigate('/');
-        }
-    }, [user, navigate]);
     
     const handleSubmit = async (e) => {
         e.preventDefault();
