@@ -27,37 +27,34 @@ function LoginForm() {
             navigate('/');
         }
     }, [user, navigate]);
-
-    useEffect(() => {
-        // 로그인 페이지 진입시 쿠키의 sessionid 삭제
-        removeCookie('sessionid');
-    }   , []);
     
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
         const csrfToken=getCookie('csrftoken');
-        try {
-            const response = await axios.post(`http://localhost:8000/api/account/login/`, {
-                username,
-                password
-            }, {
-                headers: {
-                    'X-CSRFToken': csrfToken
-                },
-                withCredentials: true
-            });
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken,
+            },
+            withCredentials: true
+        };
+        axios.post("http://localhost:8000/api/account/login/", {
+            username,
+            password
+        }, config)
+        .then((response) => {
             localStorage.setItem('user', JSON.stringify({ username: username }));
             setUser({ username: username });
             navigate('/');
-        } catch (error) {
+        })
+        .catch((error) => {
             if (error.response && error.response.data) {
                 setError(error.response.data.error || '로그인 실패. 다시 시도해주세요.');
             } else {
                 setError('서버 오류가 발생했습니다. 다시 시도해주세요.');
             }
-        }
+        });
     };
 
     const showTempMessage = (error) => {
@@ -75,12 +72,8 @@ function LoginForm() {
 
     return (
         <div className='login-container'>
-            <div className='logo-img'>
-                <div className='logo-span'>
-                    <span className='logo-l'>
-                        Bridge
-                    </span>
-                </div>
+            <div className='logo'>
+                <span>Bridge</span>
             </div>
             {tempMessage && <div className='error'>{tempMessage}</div>}
             <form onSubmit={handleSubmit}>
@@ -103,13 +96,7 @@ function LoginForm() {
             <Link to="/signup" className='signup-link'>
                 <p>Bridge에 처음이신가요? <span style={{color:"#4CA771", marginLeft:"1rem"}}>회원가입</span></p>
             </Link>
-            <Link to="/find-id" className='signup-link'>
-                <p style={{color:"#737373"}}>아이디/비밀번호 찾기</p>
-            </Link>
         </div>
-        
-        
-        
     );
 }
 
