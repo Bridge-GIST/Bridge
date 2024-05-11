@@ -11,8 +11,8 @@ function DiaryWrite() {
     // 일기 제출 및 긍정 일기 변환 요청
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const token = localStorage.getItem('token');
-        if (!token) {
+        const token = localStorage.getItem('user');
+        if (!user) {
             console.error('로그인이 필요합니다.');
             return;
         }
@@ -22,7 +22,7 @@ function DiaryWrite() {
             const response = await axios.post('/api/create-diary/', {
                 title, content
             }, {
-                headers: { Authorization: `Bearer ${token}` }
+                withCredentials: true
             });
 
             // crossDiary 컴포넌트로 네비게이션, 일기 데이터를 상태로 전달
