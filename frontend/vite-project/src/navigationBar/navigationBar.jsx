@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./navigationBar.css";
 
 function NavigationBar() {
   return (
@@ -9,6 +10,7 @@ function NavigationBar() {
           <span className="B">B</span>
           <span className="ridge">ridge</span>
         </Link>
+
         <Link to="/mainScreen" className="diary">
           <span className="DiaryBtn">Diary</span>
         </Link>

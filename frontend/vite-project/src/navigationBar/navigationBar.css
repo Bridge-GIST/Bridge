@@ -1,0 +1,45 @@
+/* navigationBar.css */
+
+nav {
+  background-color: #ffffff; /* Set the background color of the navigation bar */
+  padding: 10px 20px; /* Add padding to the navigation bar */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow to the navigation bar */
+}
+
+.Bar {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Align items vertically */
+  justify-content: space-between; /* Space out items */
+}
+
+.nav-logo {
+  text-decoration: none; /* Remove underline from the link */
+  color: #333333; /* Set the color of the link */
+  font-size: 24px; /* Set the font size */
+  font-weight: bold; /* Make the text bold */
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Align items vertically */
+}
+
+.nav-logo .B {
+  color: #4ca771; /* Set the color of the letter B */
+}
+
+.ridge {
+  font-family: Arial, sans-serif; /* Set the font family */
+}
+
+.diary {
+  text-decoration: none; /* Remove underline from the link */
+  color: #333333; /* Set the color of the link */
+  font-size: 18px; /* Set the font size */
+  margin: 0 auto; /* Center the link horizontally */
+}
+
+.diary:hover {
+  color: #4ca771; /* Change color on hover */
+}
+
+.logInBtn:active {
+  color: #4ca771;
+}
