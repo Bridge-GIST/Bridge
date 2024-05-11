@@ -19,7 +19,7 @@ function MainScreenForm() {
           return;
         }
         const csrfToken = getCookie('csrftoken');
-        const response = await axios.get('http://127.0.0.1:8000/api/diary/user-diaries', {
+        const response = await axios.get('http://localhost:8000/api/diary/user-diaries', {
           withCredentials: true
         });
         setDiaries(response.data);
@@ -35,7 +35,7 @@ function MainScreenForm() {
   const handleSearch = async () => {
     try {
       const csrfToken = getCookie('csrftoken');
-      const response = await axios.get(`http://127.0.0.1:8000/api/search-diary/?query=${query}&date=${date}`, {
+      const response = await axios.get(`http://localhost:8000/api/search-diary/?query=${query}&date=${date}`, {
         withCredentials: true
       });
       setDiaries(response.data);

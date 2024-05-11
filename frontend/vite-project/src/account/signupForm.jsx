@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { getCookie } from '../utils';
 import './account.css';
+import {useNavigate} from 'react-router-dom';
 
 function SignupForm() {
     const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ function SignupForm() {
     });
     const [error, setError] = useState('');
     const [tempMessage, setTempMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -42,6 +44,7 @@ function SignupForm() {
             setTimeout(() => {
                 setTempMessage(''); // 메시지 제거
             }, 10000);
+            navigate('/login');
             // 회원가입 성공 처리 로직
         } catch (error) {
             if (error.response && error.response.data) {
@@ -76,7 +79,7 @@ function SignupForm() {
     return (
         <div className="signup-container">
             <div className='logo'>
-                <span>회원가입</span>
+                <span>회원가입1</span>
             </div>
             <p className='signup-intro'>지금 <span className='color'>Bridge</span>에 회원가입하여<br/> 불안을 기록하고, 해결해보세요</p>
             {tempMessage && <div className='error'>{tempMessage}</div>}

@@ -40,7 +40,7 @@ function LoginForm() {
         .then((response) => {
             localStorage.setItem('user', JSON.stringify({ username: username }));
             setUser({ username: username });
-            navigate('/');
+            navigate('/mainscreen');
         })
         .catch((error) => {
             if (error.response && error.response.data) {
