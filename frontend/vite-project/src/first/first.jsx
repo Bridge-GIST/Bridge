@@ -1,11 +1,13 @@
 import React from "react";
-//import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-//import
+import "./first.css";
+import First from "../first/first.png";
+import { NavigationBar } from "../navigationBar";
 
 function FirstPage() {
   return (
     <div className="img-box">
-      <img src="" alt="" />
+      <NavigationBar />
+      <img className="pic" src={First} />
     </div>
   );
 }
