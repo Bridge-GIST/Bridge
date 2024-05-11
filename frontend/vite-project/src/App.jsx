@@ -2,17 +2,22 @@ import { useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css'
 import { TestForm } from './test'
-
+import { LoginForm, SignupForm } from './account'
+import { UserProvider } from './UserContext';
 
 function App() {
   return (
-    <Router>
-      <div className='App'>
-        <Routes>
-          <Route path="/" element={<TestForm />} />
-        </Routes>
-      </div>
-    </Router>
+    <UserProvider>
+      <Router>
+        <div className='App'>
+          <Routes>
+            <Route path="/" element={<TestForm />} />
+            <Route path='/login' element={<LoginForm/>} />
+            <Route path='/signup' element={<SignupForm/>} />
+          </Routes>
+        </div>
+      </Router>
+    </UserProvider>
   );
 }
 

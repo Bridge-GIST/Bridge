@@ -1,9 +1,10 @@
 from django.urls import path
-from .views import PostAPI, GetAPI
+from .views import AccountCreateAPI, LoginAPI, LogoutAPI
 
 app_name = 'accountapp'
 
 urlpatterns = [
-    path('post-vote', PostAPI.as_view(), name='post-vote'),
-    path('get-vote', GetAPI.as_view(), name='get-vote'),
+    path('signup/', AccountCreateAPI.as_view(), name='signup'),
+    path('login/', LoginAPI.as_view(), name='login'),
+    path('logout/', LoginAPI.as_view(), name='logout')
 ]

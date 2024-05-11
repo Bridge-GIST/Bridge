@@ -1,9 +1,16 @@
 from rest_framework import serializers
-from .models import Vote
+from .models import User
 
-class VoteSerializer(serializers.Serializer):
-    vote = serializers.CharField(max_length=10)
-
+class AccountCreateSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Vote
-        fields = ['biden_count', 'trump_count', 'vote']
+        model = User
+        fields = ["username", "password"]
+        extra_kwargs = {
+            'password': {'write_only': True}
+        }
+
+    def create(self, validated_data):
+        user = User.objects.create_user(**validated_data)
+        user.is_active = True
+        user.save()
+        return user
