@@ -4,6 +4,7 @@ import './App.css'
 import { TestForm } from './test'
 import { LoginForm, SignupForm } from './account'
 import { UserProvider } from './UserContext';
+import { MainScreenForm } from './mainScreen';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Route path="/" element={<TestForm />} />
             <Route path='/login' element={<LoginForm/>} />
             <Route path='/signup' element={<SignupForm/>} />
+            <Route path='/mainscreen' element={<MainScreenForm/>} />
           </Routes>
         </div>
       </Router>

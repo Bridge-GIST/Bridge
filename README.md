@@ -1,4 +1,4 @@
-<h1>🌱 DRF + React Quick Starter</h1>
+<h1>🌱 Bridge</h1>
 <br>
 
 <h2>Stack</h2>
