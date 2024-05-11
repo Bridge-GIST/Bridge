@@ -14,7 +14,7 @@ class AccountCreateAPI(APIView):
         serializer = AccountCreateSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
-            user.is_active = False
+            user.is_active = True
             user.save()
 
             return Response({'message': '회원가입성공'}, status=HTTP_201_CREATED)

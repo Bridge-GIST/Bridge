@@ -21,4 +21,7 @@ from django.urls.conf import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/account/', include('accountapp.urls')),
+    path('api/advise/', include('adviseapp.urls')),
+    path('api/diary/', include('diaryapp.urls')),
+    path('api/recommend/', include('recommendapp.urls')),
 ]

@@ -7,11 +7,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Advice
-from .serializer import Serializer
+from .serializer import AdviceSerializer
 
 class PostAdviceAPI(APIView):
   def post(self, request, *args, **kwargs):
-    serializer = Serializer(data=request.data)
+    serializer = AdviceSerializer(data=request.data)
     if serializer.is_valid():
       serializer.save()
       return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -22,7 +22,7 @@ class GetAdviceAPI(APIView):
   def get(self, request, pk, *args, **kwargs):
     try:
       advice = Advice.objects.get(pk=pk)
-      serializer = Serializer(advice)
+      serializer = AdviceSerializer(advice)
       return Response(serializer.data)
     except Advice.DoesNotExist:
       return Response({'error': 'Advice not found'}, status=status.HTTP_404_NOT_FOUND)
