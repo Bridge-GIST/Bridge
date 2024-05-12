@@ -9,7 +9,7 @@ class DiaryApp(models.Model):
     gpt_content = models.TextField(blank=True)  # GPT로 변환된 긍정 일기 내용
     analysis = models.TextField(blank=True)  # 심리 상태 분석 결과
     weather = models.IntegerField(default=0)
-    sleep_hour = models.FloatField(max_length=3000)
+    sleep_hour = models.FloatField(max_length=3000, default=0.0, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
