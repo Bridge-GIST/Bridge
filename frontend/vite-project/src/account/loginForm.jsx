@@ -33,7 +33,7 @@ function LoginForm() {
             },
             withCredentials: true
         };
-        axios.post("http://localhost:8000/api/account/login/", {
+        axios.post("http://127.0.0.1:8000/api/account/login/", {
             username,
             password
         }, config)

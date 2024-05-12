@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // useNavigate 추가
+import { Link, useNavigate } from 'react-router-dom'; // useNavigate 추가
 import { getCookie } from '../utils';
 import './MainScreenForm.css';
 
@@ -19,7 +19,12 @@ function MainScreenForm() {
           return;
         }
         const csrfToken = getCookie('csrftoken');
-        const response = await axios.get('http://127.0.0.1:8000/api/diary/user-diaries', {
+        const sessionid = getCookie('sessionid');
+        const response = await axios.get('http://localhost:8000/api/diary/user-diaries', {
+          headers: {
+            'X-CSRFToken': csrfToken,
+            'Content-Type': 'application/json',
+          },
           withCredentials: true
         });
         setDiaries(response.data);
@@ -35,14 +40,20 @@ function MainScreenForm() {
   const handleSearch = async () => {
     try {
       const csrfToken = getCookie('csrftoken');
-      const response = await axios.get(`http://127.0.0.1:8000/api/search-diary/?query=${query}&date=${date}`, {
-        withCredentials: true
+      const response = await axios.get(`http://localhost:8000/api/search-diary/?query=${query}&date=${date}`, {
+        withCredentials: true,
+        headers: {
+          'X-CSRFToken': csrfToken
+        },
       });
       setDiaries(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
       setDiaries([]);
     }
+  };
+  const handleRowClick = (diaryId) => {
+    navigate(`/cross/${diaryId}`);
   };
 
   // "일기 쓰기" 버튼 클릭 시 diaryWrite 페이지로 이동
@@ -86,13 +97,13 @@ function MainScreenForm() {
                         </tr>
                     </thead>
                     <tbody>
-                        {diaries.map(diary => (
-                            <tr key={diary.id}>
-                                <td>{new Date(diary.created_at).toLocaleDateString()}</td>
-                                <td>{diary.title}</td>
-                                <td>{diary.content.slice(0, 30)}{diary.content.length > 30 ? '...' : ''}</td>
-                            </tr>
-                        ))}
+                      {diaries.map((diary) => (
+                        <tr key={diary.id} onClick={() => handleRowClick(diary.id)} style={{ cursor: 'pointer' }}>
+                          <td>{new Date(diary.created_at).toLocaleDateString()}</td>
+                          <td>{diary.title}</td>
+                          <td>{diary.content.slice(0, 30)}{diary.content.length > 30 ? '...' : ''}</td>
+                        </tr>
+                      ))}
                     </tbody>
                 </table>
             </div>

@@ -1,34 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
-import './CrossDiary.css';
+import './crossDiary.css';
 
 function CrossDiary() {
-    const { state } = useLocation();
-    const [diary, setDiary] = useState(state ? state.diary : null);
-    const [loading, setLoading] = useState(!state);
+    const [diary, setDiary]=useState(null);
+    const { pk } = useParams();
 
+    // axios로 /api/diary/:id/
     useEffect(() => {
-        if (!diary) {
-            setLoading(true);
-            axios.get('http://localhost:8000/api/diary-url') // You need to replace '/api/diary-url' with actual API endpoint
-                .then(response => {
-                    setDiary(response.data);
-                    setLoading(false);
-                })
-                .catch(error => {
-                    console.error('There was an error fetching the diary data:', error);
-                    setLoading(false);
+        const fetchDiary = async () => {
+            try {
+                console.log(pk);
+                const response = await axios.get(`http://localhost:8000/api/diary/user-diaries/${pk}`, {
+                    withCredentials: true,
                 });
-        }
-    }, [diary]);
-
-    if (loading) {
-        return <div>Loading...</div>;
-    }
+                console.log(response);
+                setDiary(response.data);
+                console.log(response.data);
+            } catch (error) {
+                console.error('Error fetching diary:', error);
+            }
+        };
+        fetchDiary();
+    }, [pk]);
 
     if (!diary) {
-        return <div>Diary not found.</div>;
+        return <div>Loading...</div>;
     }
 
     return (

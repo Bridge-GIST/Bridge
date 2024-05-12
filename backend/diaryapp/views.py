@@ -52,6 +52,14 @@ class UserDiaryListAPIView(APIView):
         serializer = DiarySerializer(diaries, many=True)
         return Response(serializer.data)
     
+class DiaryDetailAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, pk):
+        diary = get_object_or_404(DiaryApp, pk=pk)
+        serializer = DiarySerializer(diary)
+        return Response(serializer.data)
+    
 #일기의 제목,내용,수면시간을 한 문장으로 합쳐서 gpt한테 보내는..?
 class CreateDiaryAPIView(APIView):
     permission_classes = [IsAuthenticated]

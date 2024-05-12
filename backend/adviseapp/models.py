@@ -20,6 +20,4 @@ from diaryapp.models import DiaryApp as Diary
 class Recommend(models.Model):
     target_diary = models.OneToOneField(Diary,related_name='recommend',on_delete= models.CASCADE) # target diary의 id
     content = models.TextField(default=None) # return해줘야 할 recommend의 content
-        
-
 """

@@ -1,5 +1,5 @@
 import React from "react";
-import "./first.css";
+//import "./first.css";
 import First from "../first/first.png";
 import { NavigationBar } from "../navigationBar";
 
