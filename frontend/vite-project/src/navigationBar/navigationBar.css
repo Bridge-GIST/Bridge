@@ -15,7 +15,7 @@ nav {
 .nav-logo {
   text-decoration: none; /* Remove underline from the link */
   color: #333333; /* Set the color of the link */
-  font-size: 24px; /* Set the font size */
+  font-size: 2rem; /* Set the font size */
   font-weight: bold; /* Make the text bold */
   display: flex; /* Use flexbox for layout */
   align-items: center; /* Align items vertically */
@@ -42,4 +42,8 @@ nav {
 
 .logInBtn:active {
   color: #4ca771;
+}
+
+.logInBtn {
+  color: #333333;
 }

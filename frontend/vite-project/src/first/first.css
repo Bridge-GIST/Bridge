@@ -1,0 +1,26 @@
+.img-box {
+    position: relative; /* 상대 위치 지정 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+  }
+  
+  .image-container {
+    position: relative; /* 이미지 컨테이너 상대 위치 지정 */
+  }
+  
+  .pic {
+    display: block; /* 이미지 블록 디스플레이 */
+    width: 100%; /* 이미지 너비를 부모에 맞춤 */
+    height: auto; /* 이미지 높이 자동 조절 */
+  }
+  
+  .overlay-text {
+    position: absolute; /* 절대 위치 사용하여 오버레이 텍스트 설정 */
+    top: 50%; /* 상단에서 50% 위치 */
+    left: 50%; /* 왼쪽에서 50% 위치 */
+    transform: translate(-50%, -50%); /* 정확한 중앙 정렬을 위한 변환 */
+    color: white; /* 텍스트 색상 */
+    font-size: 4rem; /* 텍스트 크기 */
+    font-weight: bold; /* 글씨 굵기 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 텍스트 그림자 효과 */
+  }
+  

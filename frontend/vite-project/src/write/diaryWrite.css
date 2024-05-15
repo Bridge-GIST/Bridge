@@ -47,6 +47,10 @@
     gap: 10px;
 }
 
+.diary-form textarea {
+    width: 95%;
+}
+
 .form-group {
     margin-bottom: 15px;
 }

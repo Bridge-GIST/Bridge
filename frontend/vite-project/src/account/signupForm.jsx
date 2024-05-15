@@ -3,6 +3,7 @@ import axios from 'axios';
 import { getCookie } from '../utils';
 import './account.css';
 import {useNavigate} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function SignupForm() {
     const [formData, setFormData] = useState({
@@ -79,7 +80,7 @@ function SignupForm() {
     return (
         <div className="signup-container">
             <div className='logo'>
-                <span>회원가입1</span>
+                <span>회원가입</span>
             </div>
             <p className='signup-intro'>지금 <span className='color'>Bridge</span>에 회원가입하여<br/> 불안을 기록하고, 해결해보세요</p>
             {tempMessage && <div className='error'>{tempMessage}</div>}
@@ -113,6 +114,7 @@ function SignupForm() {
                 <p className='para'>· 확인을 위해 동일한 비밀번호를 입력해주세요.</p>
 
                 <button className="signup-button" type="submit">회원가입</button>
+                <Link to="/login" className="test"><span>로그인 바로가기</span></Link>
             </form>
         </div>
     );

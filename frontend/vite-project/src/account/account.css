@@ -9,7 +9,16 @@
     border-radius: 8px; /* 둥근 모서리 */
     padding: 3rem;
 }
+.color {
+    color: #4CA771!important;
 
+}
+.test {
+    color: #737373;
+    font-size: .85rem;
+    text-align: center;
+
+}
 .signup-container > .signup-intro {
     margin: 1rem 0rem;
     text-align: center;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { getCookie } from '../utils';
 import './diaryWrite.css';
 
 function DiaryWrite() {
@@ -18,15 +19,23 @@ function DiaryWrite() {
         }
 
         try {
-            // 일기 데이터를 백엔드로 전송하고 응답을 받음
-            const response = await axios.post('/api/create-diary/', {
-                title, content
+            const csrftoken = getCookie('csrftoken');
+            const response = await axios.post('http://localhost:8000/api/diary/create-diary', {
+                title,
+                content
             }, {
-                withCredentials: true
+                withCredentials: true,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                }
             });
-
-            // crossDiary 컴포넌트로 네비게이션, 일기 데이터를 상태로 전달
-            navigate('/crossScreen', { state: { diary: response.data } });
+            const pk = response.data.id;
+            if (pk) {
+                navigate(`/cross/${pk}`);
+            } else {
+                console.error('응답에서 일기 ID(pk)를 찾을 수 없습니다.');
+            }
         } catch (error) {
             console.error('일기 제출 중 오류가 발생했습니다:', error);
         }

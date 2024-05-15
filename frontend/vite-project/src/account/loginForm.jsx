@@ -67,7 +67,7 @@ function LoginForm() {
     return (
         <div className='login-container'>
             <div className='logo'>
-                <span>Bridge</span>
+                <span><span className='color'>B</span>ridge</span>
             </div>
             {tempMessage && <div className='error'>{tempMessage}</div>}
             <form onSubmit={handleSubmit}>

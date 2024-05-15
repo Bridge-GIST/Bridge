@@ -65,7 +65,7 @@ function MainScreenForm() {
     <div className="app-container">
         <div className="top-bar">
             <div>
-                <h1 className="bridge-title">Bridges</h1>
+                <h1 className="bridge-title"><span className='color'>B</span>ridges</h1>
                 <p className="subtitle">나의 불안을 긍정으로</p>
             </div>
             <div className="search-container">
@@ -85,6 +85,9 @@ function MainScreenForm() {
                 <button onClick={handleSearch} className="search-button">검색</button>
             </div>
             <button onClick={handleWriteDiary} className="write-button">일기 쓰기</button>
+        </div>
+        <div className='may'>
+          <p>2024년 <span className='color'>5월</span></p>
         </div>
         {diaries.length > 0 ? (
             <div className="diary-table-container">

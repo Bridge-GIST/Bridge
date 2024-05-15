@@ -40,7 +40,7 @@
 .search-container {
   display: flex;
   align-items: center;
-  background: #f2f2f2; /* 회색 바탕 */
+  background: none; /* 회색 바탕 */
   padding: 10px;
   border-radius: 20px; /* 둥근 모서리 */
   gap: 10px;
@@ -57,9 +57,25 @@
   max-width: 200px; /* 최대 너비 설정 */
 }
 
+.search-container > .search-input {
+  border-radius: 10px;
+  border: none;
+  margin: 0;
+  padding: 1.2rem;
+}
+
+.search-container > .search-button {
+  border-radius: 10px;
+  padding: 1.3rem;
+}
+
+.search-container > .search-input:first-child {
+  margin-left: 18%;
+}
+
 .search-button {
   padding: 8px 16px;
-  background-color: #4CA771;
+  background-color: #888888;
   color: white;
   border: none;
   border-radius: 20px; /* 둥근 모서리 */
@@ -72,11 +88,11 @@
 }
 
 .write-button {
-  padding: 10px 20px;
+  padding: 20px 25px;
   background-color: #4CA771;
   color: white;
   border: none;
-  border-radius: 20px; /* 둥근 모서리 */
+  border-radius: 10px; /* 둥근 모서리 */
   cursor: pointer;
   transition: background-color 0.3s;
   order: 1; /* 일기 쓰기 버튼을 왼쪽으로 이동 */
@@ -105,8 +121,21 @@
 
 .no-diaries-message {
   text-align: center;
-  color: #888888;
+  color: #888888; 
   font-size: 16px;
   margin-top: 50px; /* 메시지를 더 중앙에 위치 */
   width: 100%;
+}
+
+tr > td {
+  font-size: 1rem;
+}
+tr > td:first-child {
+  color: #888888;
+}
+
+.may {
+  margin-top: 1rem;
+  font-size: 1.8rem;
+  font-weight: 1000;
 }

@@ -34,13 +34,13 @@ function CrossDiary() {
             <h1 className="title-style">Bridges</h1>
             <div className="diary-display">
                 <div className="original-diary">
-                    <h2>원본 일기</h2>
+                    <h2>나의 일기</h2>
                     <p><b>제목:</b> {diary.title}</p>
                     <p><b>내용:</b> {diary.content}</p>
-                    <p><b>수면 시간:</b> {diary.sleep_hour} hours</p>
+                    {/*<p><b>수면 시간:</b> {diary.sleep_hour} hours</p>*/}
                 </div>
                 <div className="positive-diary">
-                    <h2>긍정 일기</h2>
+                    <h2>긍정적으로 생각해봐!</h2>
                     <p><b>제목:</b> {diary.title}</p>
                     <p><b>내용:</b> {diary.gpt_content}</p>
                 </div>
