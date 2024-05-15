@@ -15,8 +15,8 @@
 <tbody>
 <tr>
 <td width="100" align="center">곽병혁</td>
-<td width="250" align="center">UI/UX, 풀스택 </td>
-<td width="150" align="center"> 
+<td width="250" align="center">UI/UX, 풀스택, 발표(시연) </td>
+<td width="150" align="center">
   <a href="https://github.com/Aiden-Kwak" target="_blank"><img src="https://img.shields.io/badge/Aiden--Kwak-655ced?style=social&logo=github"/></a></td>
 </tr>
 	
@@ -78,6 +78,8 @@ $ python manage.py runserver
 $ npm install
 $ npm run dev
 ```
+
+
 
 
 
